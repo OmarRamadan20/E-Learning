@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.example.e_learning.userAuthentication.fragments.register.RegisterFragmentViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_outside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".ui.userAuthentication.fragments.register.RegisterFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="-96dp"
+                tools:layout_editor_absoluteY="60dp">
+                <com.shuhart.stepview.StepView
+                    android:id="@+id/stepView"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_margin="16dp"
+                    app:sv_selectedCircleColor="@color/off_white"
+                    app:sv_selectedTextColor="@color/black"
+                    app:sv_stepLineWidth="3dp"
+                    app:sv_doneTextColor="@color/black"
+                    app:sv_nextTextColor="@color/black"
+                    app:sv_nextStepLineColor="@color/off_white2"
+                    app:sv_doneCircleColor="@color/colorPrimary"
+                    app:sv_doneStepLineColor="@color/colorPrimary"
+                    app:sv_doneCircleRadius="22dp"
+
+                    app:sv_selectedCircleRadius="27dp"
+                    app:sv_selectedStepNumberColor="@color/black"
+                    app:sv_doneStepMarkColor="@color/white"
+                    app:sv_stepNumberTextSize="12sp"
+                    app:sv_animationType="Circle"
+
+                    />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    android:layout_marginBottom="8dp"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/phone_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Phone Number"
+                        app:errorEnabled="true"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:errorIconDrawable="@null"
+                        app:error="@{vm.phoneNumberErrorLiveData}"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phone_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:maxLength="30"
+                            android:text="@={vm.phoneNumberLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:errorText="@{vm.phoneNumberErrorLiveData}"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/BOD_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Date of birth"
+                        app:errorEnabled="true"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:inputType="none"
+                        app:error="@{vm.dateErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:errorIconDrawable="@null"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/BOD_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="date"
+                            android:maxLength="30"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:text="@={vm.dateLiveData}"
+                            android:drawableEnd="@drawable/ic_calendar"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    android:layout_marginBottom="8dp"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gov_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Government"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:error="@{vm.govErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/gov_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:maxLength="30"
+                            android:text="@={vm.govLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:errorText="@{vm.govErrorLiveData}"
+
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    android:layout_marginBottom="8dp"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/city_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="City"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:error="@{vm.cityErrorLiveData}"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/city_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:maxLength="30"
+                            android:text="@={vm.cityLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            error="@{vm.cityErrorLiveData}"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginBottom="8dp"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gender_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Gender"
+                        android:focusable="false"
+                        android:clickable="true"
+                        app:errorIconDrawable="@null"
+                        app:error="@{vm.genderErrorLiveData}"
+                        android:inputType="none"
+                        app:errorEnabled="true"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/gender_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:text="@={vm.genderLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_dropdown"
+                            android:drawablePadding="12dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="Next"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_next"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="6dp"
+                    style="@style/RectangleButtonStyle" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
