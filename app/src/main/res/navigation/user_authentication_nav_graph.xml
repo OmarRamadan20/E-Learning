@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginFragment">
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.e_learning.userAuthentication.fragments.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_stepOneFragment"
+            app:destination="@id/stepOneFragment" />
+    </fragment>
+
+    <!-- Step One Fragment -->
+    <fragment
+        android:id="@+id/stepOneFragment"
+        android:name="com.example.e_learning.userAuthentication.fragments.register.steps.StepOneFragment"
+        android:label="Step One"
+        tools:layout="@layout/fragment_step_one">
+        <action
+            android:id="@+id/action_stepOneFragment_to_stepTwoFragment"
+            app:destination="@id/stepTwoFragment" />
+        <action
+            android:id="@+id/action_stepOneFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <!-- Step Two Fragment -->
+    <fragment
+        android:id="@+id/stepTwoFragment"
+        android:name="com.example.e_learning.userAuthentication.fragments.register.steps.StepTwoFragment"
+        android:label="Step Two"
+        tools:layout="@layout/fragment_step_two">
+        <action
+            android:id="@+id/action_stepTwoFragment_to_stepThreeFragment"
+            app:destination="@id/stepThreeFragment" />
+        <action
+            android:id="@+id/action_stepTwoFragment_to_stepOneFragment"
+            app:destination="@id/stepOneFragment" />
+    </fragment>
+
+    <!-- Step Three Fragment -->
+    <fragment
+        android:id="@+id/stepThreeFragment"
+        android:name="com.example.e_learning.userAuthentication.fragments.register.steps.StepThreeFragment"
+        android:label="Step Three"
+        tools:layout="@layout/fragment_step_three">
+        <action
+            android:id="@+id/action_stepThreeFragment_to_stepTwoFragment"
+            app:destination="@id/stepTwoFragment" />
+        <action
+            android:id="@+id/action_stepThreeFragment_to_stepOneFragment"
+            app:destination="@id/stepOneFragment" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.example.e_learning.userAuthentication.fragments.register.RegisterFragmentViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_outside"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            tools:context=".ui.userAuthentication.fragments.register.RegisterFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.shuhart.stepview.StepView
+                    android:id="@+id/stepView"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_margin="16dp"
+                    app:sv_selectedCircleColor="@color/off_white"
+                    app:sv_selectedTextColor="@color/black"
+                    app:sv_stepLineWidth="3dp"
+
+                    app:sv_nextTextColor="@color/black"
+                    app:sv_nextStepLineColor="@color/off_white2"
+                    app:sv_doneCircleColor="@color/colorPrimary"
+                    app:sv_doneStepLineColor="@color/colorPrimary"
+                    app:sv_doneCircleRadius="22dp"
+                    app:sv_selectedCircleRadius="27dp"
+                    app:sv_selectedStepNumberColor="@color/black"
+                    app:sv_doneStepMarkColor="@color/white"
+                    app:sv_stepNumberTextSize="12sp"
+                    app:sv_animationType="Circle" />
+
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/register"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:paddingTop="30dp"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="come to learn from our application" />
+
+                <!-- First Name -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/first_name_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="First Name"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:error="@{vm.firstNameErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/first_name_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:maxLength="30"
+                            android:text="@={vm.firstNameLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:errorText="@{vm.firstNameErrorLiveData}"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Last Name -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/last_name_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Last Name"
+                        app:errorEnabled="true"
+                        app:Error="@{vm.lastNameErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:errorIconDrawable="@null"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/last_name_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/poppins_regular"
+                            android:inputType="textPersonName"
+                            android:maxLength="30"
+                            android:text="@={vm.lastNameLiveData}"
+                            android:textColor="@color/black"
+                            app:errorText="@{vm.lastNameErrorLiveData}"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- Password -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Password"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:error="@{vm.passwordErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/password_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLength="30"
+                            android:text="@={vm.passwordLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:errorText="@{vm.passwordErrorLiveData}"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Password Confirmation -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_confirmation_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Password Confirmation"
+                        app:errorEnabled="true"
+                        app:error="@{vm.passwordConfirmationErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:errorIconDrawable="@null"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/password_confirmation_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLength="30"
+                            app:errorText="@{vm.passwordConfirmationErrorLiveData}"
+                            android:text="@={vm.passwordConfirmationLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- Email -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email_input_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="E-mail address"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:error="@{vm.emailErrorLiveData}"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="30"
+                            app:errorText="@{vm.emailErrorLiveData}"
+                            android:text="@={vm.emailLiveData}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="Next"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_next"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="6dp"
+                    style="@style/RectangleButtonStyle" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

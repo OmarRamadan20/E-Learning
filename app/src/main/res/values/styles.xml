@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">2dp</item> <!-- default thickness -->
+        <item name="boxStrokeWidthFocused">3dp</item> <!-- thickness when focused -->
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="boxBackgroundColor">@android:color/white</item>
+    </style>
+    <style name="RectangleButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">0dp</item> <!-- Square corners -->
+        <item name="backgroundTint">@color/colorPrimary</item> <!-- Or any other solid color -->
+    </style>
+</resources>
