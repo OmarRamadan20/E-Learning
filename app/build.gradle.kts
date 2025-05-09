@@ -79,6 +79,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.legacy.support.v4)
     kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
