@@ -76,6 +76,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginFragmentViewModel>
                    }
                    is LoginContract.ViewState.Success -> {
                        showSuccessView()
+                       saveToken(state.token)
                        val intent = Intent(requireContext(), MainActivity::class.java)
                        startActivity(intent)
                        requireActivity().finish()
@@ -102,6 +103,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginFragmentViewModel>
         findNavController().navigate(R.id.action_loginFragment_to_stepOneFragment)
 
     }
+
+    private fun saveToken(token: String) {
+        Log.e("Token", "saveToken: $token")
+        val sharedPreferences = requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putString("user_token", token).apply()
+        Log.e("Token", "savedToken: $token")
+    }
+
 
 
     private fun initViews() {

@@ -1,7 +1,7 @@
 package com.example.data.api.datasource
 
 import com.example.data.api.WebServices
-import com.example.data.api.contract.AuthDataSource
+import com.example.data.contract.AuthDataSource
 import com.example.domain.models.LoginRequest
 import com.example.domain.models.LoginResponse
 import com.example.domain.models.RegisterRequest
@@ -12,7 +12,8 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import javax.inject.Inject
 
-class AuthDataSourceImpl @Inject constructor(private val webServices: WebServices) : AuthDataSource {
+class AuthDataSourceImpl @Inject constructor(private val webServices: WebServices) :
+    AuthDataSource {
 
     override suspend fun signUp(request: RegisterRequest): MyResult<RegisterResponse> {
         return try {

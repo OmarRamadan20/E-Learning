@@ -1,0 +1,42 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.e_learning.home.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/allLecturesFragment"
+        android:name="com.example.e_learning.lectures.allLectures.AllLecturesFragment"
+        android:label="All Lectures" >
+        <action
+            android:id="@+id/action_allLecturesFragment_to_coursseDetailsFragment"
+            app:destination="@id/coursseDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myLecturesFragment"
+        android:name="com.example.e_learning.lectures.myLectures.MyLecturesFragment"
+        android:label="My Lectures" >
+        <action
+            android:id="@+id/action_myLecturesFragment_to_coursseDetailsFragment"
+            app:destination="@id/coursseDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.e_learning.contact.ContactFragment"
+        android:label="Contact" />
+
+    <fragment
+        android:id="@+id/coursseDetailsFragment"
+        android:name="com.example.e_learning.lectures.CourseDetailsFragment"
+        android:label="Course Details" >
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

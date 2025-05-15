@@ -1,7 +1,9 @@
-package com.route.data.repositories
+package com.example.data.repository
 
 import com.example.data.api.repository.AuthRepositoryImpl
+import com.example.data.repository.LecturesRepositoryImpl
 import com.example.domain.contract.AuthRepository
+import com.example.domain.contract.LecturesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,6 +18,11 @@ abstract class RepositoriesModule{
         authRepositoryImpl: AuthRepositoryImpl
     ): AuthRepository
 
+
+    @Binds
+    abstract fun bindLecturesRepo(
+        impl: LecturesRepositoryImpl
+    ): LecturesRepository
 
 
 }
