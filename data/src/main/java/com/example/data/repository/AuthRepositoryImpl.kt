@@ -2,7 +2,7 @@ package com.example.data.api.repository
 
 import com.example.domain.contract.AuthRepository
 import com.example.domain.models.RegisterRequest
-import com.example.data.api.contract.AuthDataSource
+import com.example.data.contract.AuthDataSource
 import com.example.domain.models.LoginRequest
 import com.example.domain.models.LoginResponse
 import com.example.domain.models.RegisterResponse

@@ -1,4 +1,4 @@
-package com.example.data.api.contract
+package com.example.data.contract
 
 import com.example.domain.models.LoginRequest
 import com.example.domain.models.LoginResponse

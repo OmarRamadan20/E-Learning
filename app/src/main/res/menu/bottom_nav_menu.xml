@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/allLecturesFragment"
+        android:icon="@drawable/ic_all_lectures"
+        android:title="All Lectures"/>
+    <item
+        android:id="@+id/myLecturesFragment"
+        android:icon="@drawable/ic_my_lectures"
+        android:title="My Lectures"/>
+    <item
+        android:id="@+id/contactFragment"
+        android:icon="@drawable/ic_contact"
+        android:title="Contact"/>
+</menu>
