@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.common.MyResult
 import com.example.domain.usecases.GetAllLecturesUseCase
 import com.example.e_learning.base.BaseViewModel
+import com.example.e_learning.lectures.LecturesContract
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,28 +16,28 @@ import javax.inject.Inject
 @HiltViewModel
 class AllLecturesViewModel @Inject constructor(
     private val getAllLecturesUseCase: GetAllLecturesUseCase
-) : BaseViewModel(),AllLecturesContract.ViewModel {
+) : BaseViewModel(), LecturesContract.ViewModel {
 
-    private val _viewState = MutableStateFlow<AllLecturesContract.ViewState>(AllLecturesContract.ViewState.Idle)
+    private val _viewState = MutableStateFlow<LecturesContract.ViewState>(LecturesContract.ViewState.Idle)
 
-    override val viewState: StateFlow<AllLecturesContract.ViewState>
+    override val viewState: StateFlow<LecturesContract.ViewState>
         get() = _viewState
 
-    private val _event = MutableSharedFlow<AllLecturesContract.Event>()
+    private val _event = MutableSharedFlow<LecturesContract.Event>()
 
-    override val event: SharedFlow<AllLecturesContract.Event>
+    override val event: SharedFlow<LecturesContract.Event>
         get() = _event
 
 
 
-    override fun doAction(action: AllLecturesContract.Action) {
+    override fun doAction(action: LecturesContract.Action) {
         viewModelScope.launch {
             when (action) {
-                is AllLecturesContract.Action.NavigateToCourse -> {
-                    _viewState.value = AllLecturesContract.ViewState.NavigateToCourse(action.courseId)
+                is LecturesContract.Action.NavigateToCourse -> {
+                    _viewState.value = LecturesContract.ViewState.NavigateToCourse(action.courseId)
                 }
 
-                is AllLecturesContract.Action.FetchLectures -> {
+                is LecturesContract.Action.FetchLectures -> {
                     fetchLectures(action.token)
                 }
             }
@@ -44,19 +45,19 @@ class AllLecturesViewModel @Inject constructor(
     }
     private fun fetchLectures(token:String?) {
         viewModelScope.launch {
-            _viewState.value = AllLecturesContract.ViewState.Loading
+            _viewState.value = LecturesContract.ViewState.Loading
             when(val result = getAllLecturesUseCase.getAllLectures(token?:"")){
                 is MyResult.Failure -> {
-                    _viewState.value = AllLecturesContract.ViewState.Error(result.exception.message?:"Unknown error")
+                    _viewState.value = LecturesContract.ViewState.Error(result.exception.message?:"Unknown error")
                 }
                 MyResult.Loading -> {
-                    _viewState.value = AllLecturesContract.ViewState.Loading
+                    _viewState.value = LecturesContract.ViewState.Loading
                 }
                 is MyResult.ServerFail -> {
-                    _viewState.value = AllLecturesContract.ViewState.Error(result.serverError.message?:"Unknown error")
+                    _viewState.value = LecturesContract.ViewState.Error(result.serverError.message?:"Unknown error")
                 }
                 is MyResult.Success -> {
-                    _viewState.value = AllLecturesContract.ViewState.GetCourses(result.data.data)
+                    _viewState.value = LecturesContract.ViewState.GetCourses(result.data.data)
                 }
             }
 

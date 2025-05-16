@@ -3,7 +3,10 @@ package com.example.data.api
 import com.example.domain.models.LoginRequest
 import com.example.domain.models.LoginResponse
 import com.example.domain.models.RegisterResponse
+import com.example.domain.models.lectures.LectureAccessRequest
+import com.example.domain.models.lectures.LectureAccessResponse
 import com.example.domain.models.lectures.LecturesResponse
+import com.example.domain.models.lectures.myLecture.MyLecturesResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -41,4 +44,16 @@ interface WebServices {
 
     @GET("lectures")
     suspend fun getAllLectures(@Header("token") token: String): Response<LecturesResponse>
+
+
+    @POST("lectures/lecture_access_request")
+    suspend fun requestLectureAccess(
+        @Body request: LectureAccessRequest
+    ): Response<LectureAccessResponse>
+
+    @GET("users/my_lectures")
+    suspend fun getMyLectures(
+        @Header("token") token: String
+    ): Response<MyLecturesResponse>
+
 }

@@ -1,4 +1,4 @@
-package com.example.e_learning.lectures
+package com.example.e_learning.lectures.lecturedetails
 
 import androidx.lifecycle.ViewModel
 

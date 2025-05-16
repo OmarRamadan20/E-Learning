@@ -1,7 +1,7 @@
 package com.example.domain.models.lectures
 
 
-data class Lecture(
+data class LectureItem(
 
 	val rating: Any? = null,
 

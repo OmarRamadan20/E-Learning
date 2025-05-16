@@ -1,7 +1,6 @@
 package com.example.e_learning.lectures.allLectures
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,13 +9,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.e_learning.MainActivity
 import com.example.e_learning.R
 import com.example.e_learning.base.BaseFragment
 import com.example.e_learning.databinding.FragmentAllLecturesBinding
-import com.example.e_learning.lectures.allLectures.adapter.LectureAdapter
-import com.example.e_learning.userAuthentication.fragments.login.LoginContract
-import com.example.e_learning.userAuthentication.fragments.login.LoginFragmentViewModel
+import com.example.e_learning.lectures.LecturesContract
+import com.example.e_learning.lectures.adapter.LectureAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,7 +37,7 @@ class AllLecturesFragment : BaseFragment<FragmentAllLecturesBinding, AllLectures
         // Get token and dispatch FetchLectures action
         val token = getToken(requireContext())
         if (!token.isNullOrEmpty()) {
-            mViewModel.doAction(AllLecturesContract.Action.FetchLectures(token))
+            mViewModel.doAction(LecturesContract.Action.FetchLectures(token))
         } else {
             Toast.makeText(requireContext(), "Token is missing", Toast.LENGTH_SHORT).show()
             return
@@ -67,11 +64,11 @@ class AllLecturesFragment : BaseFragment<FragmentAllLecturesBinding, AllLectures
         lifecycleScope.launch {
             mViewModel.viewState.collect { state ->
                 when (state) {
-                    is AllLecturesContract.ViewState.GetCourses -> {
+                    is LecturesContract.ViewState.GetCourses -> {
                         binding.progressBar.isVisible = false
                         adapter = LectureAdapter(state.lectures) { lecture ->
                             mViewModel.doAction(
-                                AllLecturesContract.Action.NavigateToCourse(
+                                LecturesContract.Action.NavigateToCourse(
                                     lecture.id
                                 )
                             )
@@ -79,7 +76,7 @@ class AllLecturesFragment : BaseFragment<FragmentAllLecturesBinding, AllLectures
                         binding.recyclerViewLectures.adapter = adapter
                     }
 
-                    is AllLecturesContract.ViewState.Error -> {
+                    is LecturesContract.ViewState.Error -> {
                         binding.progressBar.isVisible = false
                         Toast.makeText(
                             requireContext(),
@@ -88,15 +85,15 @@ class AllLecturesFragment : BaseFragment<FragmentAllLecturesBinding, AllLectures
                         ).show()
                     }
 
-                    AllLecturesContract.ViewState.Idle -> {
+                    LecturesContract.ViewState.Idle -> {
                         binding.progressBar.isVisible = false
                     }
 
-                    AllLecturesContract.ViewState.Loading -> {
+                    LecturesContract.ViewState.Loading -> {
                         binding.progressBar.isVisible = true
                     }
 
-                    is AllLecturesContract.ViewState.NavigateToCourse -> {
+                    is LecturesContract.ViewState.NavigateToCourse -> {
                         navigateToCourseDetails(state.courseId?:"")
                     }
                 }
@@ -105,7 +102,7 @@ class AllLecturesFragment : BaseFragment<FragmentAllLecturesBinding, AllLectures
         lifecycleScope.launch {
             viewModel.event.collect { event ->
                 when (event) {
-                    is AllLecturesContract.Event.ShowMessage -> {
+                    is LecturesContract.Event.ShowMessage -> {
                         Toast.makeText(requireContext(), event.viewMessage.message, Toast.LENGTH_SHORT)
                             .show()
                     }

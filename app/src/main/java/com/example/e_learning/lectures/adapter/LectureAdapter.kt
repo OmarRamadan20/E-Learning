@@ -1,15 +1,14 @@
-package com.example.e_learning.lectures.allLectures.adapter
+package com.example.e_learning.lectures.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.domain.models.lectures.Lecture
+import com.example.domain.models.lectures.LectureItem
 import com.example.e_learning.databinding.ItemLectureBinding
 
-class LectureAdapter(private val items: List<Lecture?>?, private val onItemClick: ((Lecture) -> Unit?)? =null) :
+class LectureAdapter(private val items: List<LectureItem?>?, private val onItemClick: ((LectureItem) -> Unit?)? =null) :
     RecyclerView.Adapter<LectureAdapter.LectureViewHolder>() {
 
     inner class LectureViewHolder(val binding: ItemLectureBinding) :
@@ -31,7 +30,7 @@ class LectureAdapter(private val items: List<Lecture?>?, private val onItemClick
         binding.textTitle.text = item?.title
         binding.textDesc.text = item?.description
         binding.textDuration.text = item?.duration.toString()
-        binding.textPrice.text = "$  " + item?.price.toString()
+        binding.textPrice.text = "$" + item?.price.toString()
 
         // Show/hide best seller badge
 //        binding.badgeBestSeller.visibility = if (item?.== true) View.VISIBLE else View.GONE

@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/coursseDetailsFragment"
-        android:name="com.example.e_learning.lectures.CourseDetailsFragment"
+        android:name="com.example.e_learning.lectures.lecturedetails.CourseDetailsFragment"
         android:label="Course Details" >
         <argument
             android:name="courseId"
